@@ -29,14 +29,7 @@ char* vencrypt(char msg[], char key[])
         if (isavalaible(msg[i]))
         {
             shift = findIndex(key[i%key_len]);
-            if (shift + findIndex(msg[i]) < list_len)
-            {
-                encrypted_msg[i]=AVALAIBLE_CHARS[findIndex(msg[i]) + shift];
-            }
-            else
-            {
-                encrypted_msg[i]=AVALAIBLE_CHARS[findIndex(msg[i]) + shift - list_len];
-            }
+            encrypted_msg[i]=AVALAIBLE_CHARS[(findIndex(msg[i]) + shift) % list_len];
         }
         else
             encrypted_msg[i] = msg[i];

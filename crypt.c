@@ -7,7 +7,7 @@ int main(int argc, char* argv[])
         char* msg = argv[1];
         char* key = argv[2];
     
-        char* encrypted_msg = vdecrypt(msg, key);
+        char* encrypted_msg = vencrypt(msg, key);
     
         printf("%s\n", encrypted_msg);
     
