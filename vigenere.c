@@ -4,7 +4,7 @@ int findIndex(const char c)
 {
     const size_t len = strlen(AVALAIBLE_CHARS);
     for (int i = 0; i < len; i++)
-        if (c == AVALAIBLE_CHARS[i]) return i;
+        if (toupper(c)  == AVALAIBLE_CHARS[i]) return i;
     
     return -1;
 }
