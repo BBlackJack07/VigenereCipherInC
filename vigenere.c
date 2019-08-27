@@ -1,5 +1,7 @@
 #include "vigenere.h"
 
+const char AVALAIBLE_CHARS[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 ";
+
 int findIndex(const char c)
 {
     const size_t len = strlen(AVALAIBLE_CHARS);
@@ -17,11 +19,10 @@ bool isavalaible(const char c)
 
 char* vencrypt(char msg[], char key[])
 {
-    const int msg_len = strlen(msg);
-    const int key_len = strlen(key); 
+    const size_t msg_len = strlen(msg);
+    const size_t key_len = strlen(key); 
     const size_t list_len = strlen(AVALAIBLE_CHARS);
-    char *encrypted_msg;
-    encrypted_msg = malloc(sizeof(char)*msg_len);
+    char *encrypted_msg = malloc(sizeof(char)*(msg_len+1));
     int shift;
     
     for (int i = 0; i < msg_len; i++)
@@ -34,6 +35,7 @@ char* vencrypt(char msg[], char key[])
         else
             encrypted_msg[i] = msg[i];
     }
+    encrypted_msg[msg_len] = '\0';
     return encrypted_msg;
 }
 
@@ -42,7 +44,7 @@ char* vdecrypt(char encrypted_msg[], char key[])
     const int cmsg_len = strlen(encrypted_msg);
     const int key_len = strlen(key);
     const size_t list_len = strlen(AVALAIBLE_CHARS);
-    char *msg = malloc(sizeof(char)*cmsg_len);
+    char *msg = malloc(sizeof(char)*(cmsg_len+1));
     int shift;
 
     for (int i = 0; i < cmsg_len; i++)
@@ -63,7 +65,7 @@ char* vdecrypt(char encrypted_msg[], char key[])
         else
             msg[i] = encrypted_msg[i];
     }
-
+    msg[cmsg_len] = '\0';
     return msg;
 }
 

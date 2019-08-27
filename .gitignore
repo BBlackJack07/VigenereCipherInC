@@ -1,3 +1,4 @@
 decrypt
 crypt
+*.o
 *.py
