@@ -1,21 +1,18 @@
 CC=gcc
 CFLAGS=-Wall -O2 -march=native -c
 LDFLAGS=
-SOURCES=vigenere.c crypt.c decrypt.c
+SOURCES=vigenere.c main.c
 HEADERS=vigenere.h
 OBJECTS=$(SOURCES:.c=.o)
-EXECUTABLES=crypt decrypt
+EXECUTABLE=vigenere
 
-all: $(EXECUTABLES) $(SOURCES) $(HEADERS)
+all: $(EXECUTABLE) $(SOURCES) $(HEADERS)
 
-crypt: $(OBJECTS)
-	$(CC) $(LDFLAGS) vigenere.o crypt.o   -o crypt
-
-decrypt: $(OBJECTS)
-	$(CC) $(LDFLAGS) vigenere.o decrypt.o -o decrypt
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
 
 .c.o:
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	rm $(OBJECTS) $(EXECUTABLES)
+	rm $(OBJECTS) $(EXECUTABLE)

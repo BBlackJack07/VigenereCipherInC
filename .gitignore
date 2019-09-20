@@ -1,4 +1,3 @@
-decrypt
-crypt
+vigenere
 *.o
 *.py
