@@ -34,6 +34,7 @@ int main(int argc, char* argv[])
             else
             {
                 char error[] = "vigenere: ";
+                strcat(error, argv[2]);
                 perror(error);
                 return EXIT_FAILURE;
             }
@@ -51,6 +52,7 @@ int main(int argc, char* argv[])
             else
             {
                 char error[] = "vigenere: ";
+                strcat(error, argv[2]);
                 perror(error);
                 return EXIT_FAILURE;
             }
