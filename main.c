@@ -73,15 +73,19 @@ void showHelp(void)
     puts(" where MODE should be :");
     puts("\t--crypt          to crypt message MSG using key KEY");
     puts("\t--decrypt        to decrypt message MSG using key KEY");
-    puts("\t--crypt-file     to crypt message from file PATH using key KEY");
-    puts("\t--decrypt-file   to decrypt message from file PATH using key KEY");
+    puts("\t--crypt-file     to crypt message from file PATH (or stdin if PATH is -) using key KEY");
+    puts("\t--decrypt-file   to decrypt message from file PATH (or stdin if PATH is -) using key KEY");
 }
 
 char readFile(char buffer[], char path_to_file[])
 {
     FILE * file = NULL;
-    file = fopen(path_to_file, "r");
-
+    if (!strcmp(path_to_file, "-"))
+        file = stdin;
+    else
+    {
+        file = fopen(path_to_file, "r");
+    }
     if (file != NULL)
     {
         char line[1000] = "";
