@@ -2,15 +2,8 @@
 
 int findIndex(const char c)
 {
-<<<<<<< HEAD
-    const size_t len = strlen(AVALAIBLE_CHARS);
-    for (int i = 0; i < len; i++)
-        if (toupper(c)  == AVALAIBLE_CHARS[i]) return i;
-=======
     for (unsigned int i = 0; i < (unsigned int)LENGHT; i++)
-        if (c == AVALAIBLE_CHARS[i]) return (int)i;
->>>>>>> master
-    
+        if (c == AVALAIBLE_CHARS[i]) return (int)i; 
     return -1;
 }
 
@@ -19,11 +12,10 @@ bool isavalaible(const char c)
     return (isalnum(c) || c == ' ');
 }
 
-char* vencrypt(char msg[], char key[])
+void vencrypt(char msg[], char key[], char encrypted_msg[])
 {
     const size_t msg_len = strlen(msg);
     const size_t key_len = strlen(key); 
-    char *encrypted_msg = malloc(sizeof(char)*(msg_len+1));
     int shift;
     
     for (unsigned int i = 0; i < (unsigned int)msg_len; i++)
@@ -36,15 +28,12 @@ char* vencrypt(char msg[], char key[])
         else
             encrypted_msg[i] = msg[i];
     }
-    encrypted_msg[msg_len] = '\0';
-    return encrypted_msg;
 }
 
-char* vdecrypt(char encrypted_msg[], char key[])
+void vdecrypt(char encrypted_msg[], char key[], char msg[])
 {
     const size_t cmsg_len = strlen(encrypted_msg);
     const size_t key_len = strlen(key);
-    char *msg = malloc(sizeof(char)*(cmsg_len+1));
     int shift;
 
     for (unsigned int i = 0; i < (unsigned int)cmsg_len; i++)
@@ -65,7 +54,5 @@ char* vdecrypt(char encrypted_msg[], char key[])
         else
             msg[i] = encrypted_msg[i];
     }
-    msg[cmsg_len] = '\0';
-    return msg;
 }
 

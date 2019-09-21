@@ -9,16 +9,16 @@ int main(int argc, char* argv[])
     {
         if (!strcmp("--crypt", argv[1]))
         {
-            char* encrypted_msg = vencrypt(argv[2], argv[3]);
+            char encrypted_msg[100000] = "";
+            vencrypt(argv[2], argv[3], encrypted_msg);
             printf("%s\n", encrypted_msg);
-            free(encrypted_msg);
             return EXIT_SUCCESS;
         }
         else if (!strcmp("--decrypt", argv[1]))
         {
-            char* decrypted_msg = vdecrypt(argv[2], argv[3]);
+            char decrypted_msg[100000] = "";
+            vdecrypt(argv[2], argv[3], decrypted_msg);
             printf("%s\n", decrypted_msg);
-            free(decrypted_msg);
             return EXIT_SUCCESS;
         }
         else if (!strcmp("--crypt-file", argv[1]))
@@ -26,9 +26,9 @@ int main(int argc, char* argv[])
             char buffer[100000] = "";
             if (readFile(buffer, argv[2]))
             {
-                char* encrypted_msg = vencrypt(buffer, argv[3]);
+                char encrypted_msg[100000] = "";
+                vencrypt(buffer, argv[3], encrypted_msg);
                 printf("%s\n", encrypted_msg);
-                free(encrypted_msg);
                 return EXIT_SUCCESS;
             }
             else
@@ -44,9 +44,9 @@ int main(int argc, char* argv[])
             char buffer[100000] = "";
             if (readFile(buffer, argv[2]))
             {
-                char* decrypted_msg = vdecrypt(buffer, argv[3]);
+                char decrypted_msg[100000] = "";
+                vdecrypt(buffer, argv[3], decrypted_msg);
                 printf("%s\n", decrypted_msg);
-                free(decrypted_msg);
                 return EXIT_SUCCESS;
             }
             else
