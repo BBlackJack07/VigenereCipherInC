@@ -137,7 +137,7 @@ char get_vigenere_encrypt_char(const char c, const int position, const char* key
     int row = findIndex(key[position % key_size]);
     int column = findIndex(c);
     if ((0 <= row) && (row < LENGHT) && (0 <= column) && (column < LENGHT)) {
-        c_to_return = vigenere_square[findIndex(key[position % key_size])][findIndex(c)];
+        c_to_return = vigenere_square[row][column];
     }
     return c_to_return;
 }
@@ -145,10 +145,11 @@ char get_vigenere_encrypt_char(const char c, const int position, const char* key
 char get_vigenere_decrypt_char(const char c, const int position, const char* key, const int key_size)
 {
     char c_to_return = c;
-    int row = findIndex(key[position % key_size]);
+    int column = findIndex(key[position % key_size]);
     for (int i = 0; i < LENGHT; i++) {
-        if (vigenere_square[i][row] == c) {
+        if (vigenere_square[i][column] == c) {
             c_to_return = AVALAIBLE_CHARS[i];
+            break;
         }
     }
     return c_to_return;

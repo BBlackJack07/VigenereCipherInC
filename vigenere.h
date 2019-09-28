@@ -22,5 +22,4 @@ char get_vigenere_decrypt_char(const char c, const int position, const char* key
 
 void set_vigenere_square();
 void free_vigenere_square();
-
 #endif //VIGENERE_CIPHER

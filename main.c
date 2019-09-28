@@ -14,7 +14,6 @@ int main(int argc, char* argv[])
             char encrypted_msg[MAX_MSG_SIZE] = "";
             vigenere_encrypt(argv[2], argv[3], encrypted_msg);
             printf("%s\n", encrypted_msg);
-            free_vigenere_square();
             ret = EXIT_SUCCESS;
         }
         else if (!strcmp("--decrypt", argv[1]))
@@ -22,7 +21,6 @@ int main(int argc, char* argv[])
             char decrypted_msg[MAX_MSG_SIZE] = "";
             vigenere_decrypt(argv[2], argv[3], decrypted_msg);
             printf("%s\n", decrypted_msg);
-            free_vigenere_square();
             ret = EXIT_SUCCESS;
         }
 
