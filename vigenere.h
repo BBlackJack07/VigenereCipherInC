@@ -6,17 +6,21 @@
 #include <string.h>
 #include <ctype.h>
 
-#define AVALAIBLE_CHARS "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
-#define LENGHT 63 
-
 #define bool char
 #define true 1
 #define false 0
 
-int findIndex(const char c);
-bool isavalaible(const char c);
+void vigenere_encrypt(const char* msg, const char* key, char* encrypted_msg);
+bool vigenere_encrypt_file(const char* path_to_file, const char* key, const char* output_file);
 
-void vencrypt(char msg[], char key[], char encrypted_msg[]);
-void vdecrypt(char encrypted_msg[], char key[], char msg[]);
+void vigenere_decrypt(const char* encrypted_msg, const char* key, char* msg);
+bool vigenere_decrypt_file(const char* input_file, const char* key, const char* output_file);
+
+char get_vigenere_encrypt_char(const char c, const int position, const char* key, const int key_size);
+char get_vigenere_decrypt_char(const char c, const int position, const char* key, const int key_size);
+
+
+void set_vigenere_square();
+void free_vigenere_square();
 
 #endif //VIGENERE_CIPHER

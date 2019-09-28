@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Wall -O2 -march=native -c
+CFLAGS=-std=c11 -Wall -Wextra -O2 -g -c
 LDFLAGS=
 SOURCES=vigenere.c main.c
 HEADERS=vigenere.h
